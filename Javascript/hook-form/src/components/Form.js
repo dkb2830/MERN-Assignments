@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Form = () => {
+const Form = (props) => {
     const [firstName, setFirstName] = useState('');
     const [firstError, setFirstError] = useState('');
     const [lastName, setLastName] = useState('');
@@ -59,11 +59,11 @@ const Form = () => {
         }
     }
     const passwordMatchError = (e) => {
-        if (e.target.value === passwordBadError(e) ){
-            setConfirmError(" ");
+        if (e.target.value !== setPassword ){
+            setConfirmError(" nope");
         }
         else {
-            setConfirmError(" nope");
+            setConfirmError(" ");
         }
     }
 
@@ -100,7 +100,7 @@ const Form = () => {
             </div>
             <div>
                 <label>Password:</label>
-                <input type="password" onChange={(e) => passwordBadError(e)} />
+                <input type="password" name="password" onChange={(e) => passwordBadError(e)} />
                 {
                     passwordError?
                     <p>{passwordError}</p>:null
@@ -108,7 +108,7 @@ const Form = () => {
             </div>
             <div>
                 <label>Confirm Password:</label>
-                <input type="password" onChange={(e) => passwordMatchError(e)}/>
+                <input type="password" name="confirmation" onChange={(e) => passwordMatchError(e)}/>
                 {
                     confirmError?
                     <p>{confirmError}</p>:null
