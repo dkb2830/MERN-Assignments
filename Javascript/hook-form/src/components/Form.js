@@ -1,61 +1,123 @@
 import React, { useState } from 'react';
 
-const Form = (props) => {
+const Form = () => {
     const [firstName, setFirstName] = useState('');
+    const [firstError, setFirstError] = useState('');
     const [lastName, setLastName] = useState('');
+    const [lastError, setLastError] = useState('');
     const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordError,setPasswordError] = useState('');
     const [confirmation, setConfirmation] = useState('');
+    const [confirmError, setConfirmError] = useState('');
 
-    const createUser = (e) => {
-        e.preventDefault();
-
-        const newUser = {
+    const submitHandler = (e) => {  
+            e.preventDefault();  
+            const newUser = {
             firstName,
             lastName,
             email,
             password,
             confirmation
         };
-        console.log('Welcome', newUser);
-        setFirstName(" ");
-        setLastName(" ");
-        setEmail(" ");
-        setPassword(" ");
-        setConfirmation(" ");
+        console.log(newUser);
     };
+    //     console.log('Welcome', newUser);
+    const firstNameError = (e) => {
+        if (e.target.value.length < 2) {
+            setFirstError("First Name must be at least 2 characters!");
+        }
+        else {
+            setFirstError(" ");
+        }
+    }
+
+    const lastNameError = (e) => {
+        if (e.target.value.length < 2) {
+            setLastError("First Name must be at least 2 characters!");
+        }
+        else {
+            setLastError(" ");
+        }
+    }
+
+    const emailaddError = (e) => {
+        if (e.target.value.length < 5) {
+            setEmailError("Email must be at least 5 characters!");
+        }
+        else {
+            setEmailError(" ");
+        }
+    }
+    const passwordBadError = (e) => {
+        if (e.target.value.length < 8) {
+            setPasswordError("Passwprd must be at least 8 characters!");
+        }
+        else {
+            setPasswordError(" ");
+        }
+    }
+    const passwordMatchError = (e) => {
+        if (e.target.value === passwordBadError(e) ){
+            setConfirmError(" ");
+        }
+        else {
+            setConfirmError(" nope");
+        }
+    }
+
+
+
+
+// setLastName(" ");
+// setEmail(" ");
+// setPassword(" ");
+// setConfirmation(" ");
     return (
-        <><form onSubmit={createUser}>
+        <form onSubmit = {(e) => submitHandler(e)}>
             <div>
                 <label>First Name:</label>
-                <input type="text" onChange={(e) => setFirstName(e.target.value)} value={firstName} />
+                <input type="text" onChange={(e) => firstNameError(e)} />
+                {firstError ?
+                    <p>{firstError}</p>:null}
             </div>
             <div>
                 <label>Last Name:</label>
-                <input type="text" onChange={(e) => setLastName(e.target.value)} value={lastName} />
+                <input type="text" onChange={(e) => lastNameError(e)} />
+                {
+                    lastError ?
+                    <p>{lastError}</p>:null
+                }
             </div>
             <div>
                 <label>Email:</label>
-                <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} />
+                <input type="text" onChange={(e) => emailaddError(e)}/>
+                {
+                    emailError ?
+                    <p>{emailError}</p>:null
+                }
             </div>
             <div>
                 <label>Password:</label>
-                <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                <input type="password" onChange={(e) => passwordBadError(e)} />
+                {
+                    passwordError?
+                    <p>{passwordError}</p>:null
+                }
             </div>
             <div>
                 <label>Confirm Password:</label>
-                <input type="password" onChange={(e) => setConfirmation(e.target.value)} value={confirmation} />
+                <input type="password" onChange={(e) => passwordMatchError(e)}/>
+                {
+                    confirmError?
+                    <p>{confirmError}</p>:null
+                }
             </div>
-            <input type="submit" value="Create User" />
-        </form><div>
-                <p>Your Form Data</p>
-                <p>First Name: {firstName}</p>
-                <p>Last Name: {lastName}</p>
-                <p>Email: {email}</p>
-                <p>Password: {password}</p>
-                <p>Confirm Password:{confirmation}</p>
-            </div></>
+                <input type="submit" value="Create User" />
+            
+        </form>
     );
-};
+}
 
 export default Form;
