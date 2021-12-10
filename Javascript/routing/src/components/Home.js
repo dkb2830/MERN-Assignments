@@ -6,7 +6,6 @@ const Home = props => {
         <div>
             Welcome!
             <br/>
-            <Link to ="/{id}">Number</Link>
         </div>
     )
 }

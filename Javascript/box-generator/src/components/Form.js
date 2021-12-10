@@ -1,42 +1,51 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 const Form = (props) => {
+
+    const [box, setBox] = useState([]);
     const [color, setColor] = useState('');
 
     const createBox = (e) => {
-        e.preventDefault();
+        e.preventDefault(e);
 
-        const newBox = {
+        setBox([...box,
+        {
             color: color
-        };
+        }
+        ])
     };
 
-    const box = {
+    const styleBox = {
         height: "50px",
         width: "50px",
         border: "5px solid black",
-        backgroundColor: "color",
+        backgroundColor: color,
     }
 
 
 
     return (
-        <>
-        <form onSubmit = {createBox}>
-            <div>
-                <label>Color:</label>
-                <input type="text"  onChange= {(e) => setColor(e.target.value) }/>
-            </div>
-            <div>
-                <input type="submit" value="Add"/>
-            </div>
-        </form>
-        <div style= {box}>
+        <div>
+            <form onSubmit={createBox}>
+                <div>
+                    <label>Color:</label>
+                    <input type="text" value="color" onChange={(e) => setColor(e.target.value)} />
+                </div>
+                <div>
+                    <input type="submit" value="Add" />
+                </div>
+            </form>
+            {
+                setBox.map((index) => (
+                        <div style={styleBox} key={index}>
 
+                        </div>
+
+                    ))
+            }
         </div>
-        </>
-    );
-};
+    )
+}
 
 export default Form;
 

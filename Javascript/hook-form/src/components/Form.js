@@ -59,11 +59,11 @@ const Form = (props) => {
         }
     }
     const passwordMatchError = (e) => {
-        if (e.target.value !== setPassword ){
-            setConfirmError(" nope");
+        if (password === confirmation){
+            setConfirmError(" ");
         }
         else {
-            setConfirmError(" ");
+            setConfirmError("Password does not match");
         }
     }
 
@@ -78,13 +78,13 @@ const Form = (props) => {
         <form onSubmit = {(e) => submitHandler(e)}>
             <div>
                 <label>First Name:</label>
-                <input type="text" onChange={(e) => firstNameError(e)} />
+                <input type="text" onChange={(e) => setFirstName(e.target.value)} />
                 {firstError ?
                     <p>{firstError}</p>:null}
             </div>
             <div>
                 <label>Last Name:</label>
-                <input type="text" onChange={(e) => lastNameError(e)} />
+                <input type="text" onChange={(e) => setLastName(e.target.value)} />
                 {
                     lastError ?
                     <p>{lastError}</p>:null
@@ -92,7 +92,7 @@ const Form = (props) => {
             </div>
             <div>
                 <label>Email:</label>
-                <input type="text" onChange={(e) => emailaddError(e)}/>
+                <input type="text" onChange={(e) => setEmail(e.target.value)}/>
                 {
                     emailError ?
                     <p>{emailError}</p>:null
@@ -100,7 +100,7 @@ const Form = (props) => {
             </div>
             <div>
                 <label>Password:</label>
-                <input type="password" name="password" onChange={(e) => passwordBadError(e)} />
+                <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 {
                     passwordError?
                     <p>{passwordError}</p>:null
@@ -108,7 +108,7 @@ const Form = (props) => {
             </div>
             <div>
                 <label>Confirm Password:</label>
-                <input type="password" name="confirmation" onChange={(e) => passwordMatchError(e)}/>
+                <input type="password" name="confirmation" value={confirmation} onChange={(e) => setConfirmation(e.target.value)}/>
                 {
                     confirmError?
                     <p>{confirmError}</p>:null
