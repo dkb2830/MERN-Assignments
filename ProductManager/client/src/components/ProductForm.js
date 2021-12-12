@@ -14,7 +14,6 @@ const ProductForm = () => {
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
-    //onChange to update firstName and lastName
     return (
         <form onSubmit={onSubmitHandler}>
             <h1>Product Manager</h1>
