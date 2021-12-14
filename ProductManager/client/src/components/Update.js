@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { navigate } from "@reach/router";
 const Update = (props) => {
     const { id } = props;
     const [title, setTitle] = useState();
@@ -13,7 +14,7 @@ const Update = (props) => {
                 setDescription(res.data.description);
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [])// eslint-disable-line react-hooks/exhaustive-deps
     const updateProduct = (e) => {
         e.preventDefault();
         axios.put('http://localhost:8000/api/product/' + id, {
@@ -21,8 +22,11 @@ const Update = (props) => {
             price,
             description      // this is shortcut syntax for lastName: lastName
         })
-            .then(res => console.log(res));
-    }
+            .then((res) => {console.log(res.data);
+            navigate("/");
+        })
+            .catch((err) => console.log(err.response));
+    };
     return (
         <div>
             <h1>Update a Product</h1>

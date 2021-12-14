@@ -17,7 +17,7 @@ module.exports.getAllProducts = (request, response) => {
 }
 
 module.exports.getProduct = (request, response) => {
-    Product.findOne({ _id: request.params.id })
+    Product.findOne({ _id: request.params._id })
         .then(product => response.json(product))
         .catch(err => response.json(err))
 }
@@ -29,7 +29,7 @@ module.exports.updateProduct = (request, response) => {
 }
 
 module.exports.deleteProduct = (request, response) => {
-    Product.deleteOne({ _id: request.params.id })
+    Product.deleteOne({ _id: request.params._id })
         .then(deleteConfirmation => response.json(deleteConfirmation))
         .catch(err => response.json(err))
 }

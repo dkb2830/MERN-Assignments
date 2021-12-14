@@ -12,7 +12,7 @@ const ProductForm = () => {
             description 
         })
             .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .catch(err => console.log("problem with productform.js",err))
     }
     return (
         <form onSubmit={onSubmitHandler}>

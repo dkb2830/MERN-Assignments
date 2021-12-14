@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from '@reach/router';
 const ProductList = (props) => {
     const { removeFromDom, product } = props;
+    console.log(product)
     const deleteProduct = (productId) => {
         axios.delete('http://localhost:8000/api/product/' + productId)
             .then(res => {
@@ -12,19 +13,20 @@ const ProductList = (props) => {
     }
     return (
         <div>
+            <h1>All Products</h1>
             {
-                product.map((product, index) => {
+                product.map((p, index) => {
                     return (
                         <div key={index}>
-                            <Link to={"/product/" + product._id}>
-                                {product.title}, {product.price}
+                            <Link to={"/product/" + p._id}>
+                                {p.title}, {p.price}, {p.description}
                             </Link>
                             |
-                            <Link to={"/product/" + product._id + "/edit"}>
+                            <Link to={"/product/" + p._id + "/edit"}>
                                 Edit
                             </Link>
                             |
-                            <button onClick={(e) => { deleteProduct(product._id) }}>
+                            <button onClick={(e) => { deleteProduct(p._id) }}>
                                 Delete
                             </button>
                         </div>

@@ -2,14 +2,15 @@ import React from 'react';
 import { Router } from '@reach/router';   /* this is new */
 import Main from './views/Main';
 import DisplayProduct from "./components/ProductDisplay";
-import Update from './views/Update';
+import Update from './components/Update';
+
 function App() {
   return (
     <div className="App">
       <Router>                           
         <Main path="/" />
-        <DisplayProduct path="/:_id" />
-        <Update path="/:_id/edit" />
+        <DisplayProduct path="/product/:_id" />
+        <Update path="/product/:id/edit" />
       </Router>                           
     </div>
   );
