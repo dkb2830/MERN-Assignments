@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import PetForm from '../components/PetForm';
 import PetList from '../components/PetList';
+import { Link } from '@reach/router';
+
 const Main = () => {
     const [pet, setPet] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -15,13 +17,22 @@ const Main = () => {
     }, [])
 
     const removeFromDom = petId => {
-        setPet(pet.filter(p => p._id != petId));
+        setPet(pet.filter(p => p._id !== petId));
     }
 
     return (
         <div>
-            <PetForm />
-            <hr />
+            <div>
+            <h1>Pet Shelter</h1>
+            <h2>These pets are looking for a good home</h2>
+            </div>
+            <div>
+                <Link to={"/pets/new"}>
+                    add a pet to the shelter
+                </Link>
+            </div>
+            {/* <PetForm />
+            <hr /> */}
             {loaded && <PetList pet={pet} removeFromDom={removeFromDom} />}
         </div>
     )

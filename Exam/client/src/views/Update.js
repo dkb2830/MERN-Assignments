@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { Link } from '@reach/router';
+
 const Update = (props) => {
     const { id } = props;
     const [name, setName] = useState();
@@ -15,7 +17,7 @@ const Update = (props) => {
                 setSkills(res.data.skills);
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [])// eslint-disable-line react-hooks/exhaustive-deps
     const updatePet = (e) => {
         e.preventDefault();
         axios.put('http://localhost:8000/api/pet/' + id, {
@@ -28,7 +30,11 @@ const Update = (props) => {
     }
     return (
         <div>
-            <h1>Update a Pet</h1>
+            <div>
+                <Link to={"/"}>Back to Home</Link>
+            </div>
+            <h1>Pet Shelter</h1>
+            <h2>Edit {name}</h2>
             <form onSubmit={updatePet}>
                 <p>
                     <label>Name</label><br />
