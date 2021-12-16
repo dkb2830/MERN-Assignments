@@ -23,16 +23,14 @@ const Main = () => {
     return (
         <div>
             <div>
-            <h1>Pet Shelter</h1>
-            <h2>These pets are looking for a good home</h2>
-            </div>
-            <div>
                 <Link to={"/pets/new"}>
                     add a pet to the shelter
                 </Link>
             </div>
-            {/* <PetForm />
-            <hr /> */}
+            <div>
+            <h1>Pet Shelter</h1>
+            <h3>These pets are looking for a good home</h3>
+            </div>
             {loaded && <PetList pet={pet} removeFromDom={removeFromDom} />}
         </div>
     )

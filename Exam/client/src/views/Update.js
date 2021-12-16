@@ -7,14 +7,19 @@ const Update = (props) => {
     const [name, setName] = useState();
     const [breed, setBreed] = useState();
     const [description, setDescription] = useState();
-    const [skills, setSkills] = useState();
+    const [skillOne, setSkillOne] = useState("");
+    const [skillTwo, setSkillTwo] = useState("");
+    const [skillThree, setSkillThree] = useState("")
+
     useEffect(() => {
         axios.get('http://localhost:8000/api/pet/' + id)
             .then(res => {
                 setName(res.data.name);
                 setBreed(res.data.breed);
                 setDescription(res.data.description);
-                setSkills(res.data.skills);
+                setSkillOne(res.data.skillOne);
+                setSkillTwo(res.data.skillTwo);
+                setSkillThree(res.data.skillThree);
             })
             .catch(err => console.log(err))
     }, [])// eslint-disable-line react-hooks/exhaustive-deps
@@ -24,7 +29,9 @@ const Update = (props) => {
             name,
             breed,
             description,
-            skills
+            skillOne,
+            skillTwo,
+            skillThree
         })
             .then(res => console.log(res));
     }
@@ -54,17 +61,25 @@ const Update = (props) => {
                     <label>Description</label><br/>
                     <input type="text"
                     name="description"
-                    value="description"
+                    value={description}
                     onChange={(e) => { setDescription(e.target.value)}}/>
                 </p>
                 <p>
-                    <label>Skills</label><br/>
+                    <h3>Skills:</h3>
                     <input type="text"
-                    name="skills"
-                    value="skills"
-                    onChange={(e) => {setSkills(e.target.value)}}/>
+                    name="skillOne"
+                    value={skillOne}
+                    onChange={(e) => {setSkillOne(e.target.value)}}/>
+                    <input type="text"
+                        name="skillTwo"
+                        value={skillTwo}
+                        onChange={(e) => { setSkillTwo(e.target.value) }} />
+                    <input type="text"
+                        name="skillThree"
+                        value={skillThree}
+                        onChange={(e) => { setSkillThree(e.target.value) }} />
                 </p>
-                <input type="submit" />
+                <input type="submit" value="Edit Pet"/>
             </form>
         </div>
     )

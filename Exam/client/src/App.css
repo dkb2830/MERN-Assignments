@@ -36,3 +36,75 @@
     transform: rotate(360deg);
   }
 }
+
+.list p{
+  display: block;
+}
+.detail{
+  width: 60%;
+  height: 40%;
+  border: black solid 3px;
+  text-align: left;
+  padding: 30px;
+  padding-right: 500px;
+}
+.detail div{
+  display: flex;
+  justify-content: space-between;
+}
+h1, h3 {
+  display: flex;
+}
+table {
+        border-collapse: collapse;
+        width: 60%;
+        border: black 3px solid;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 5px;
+      }
+      tr:nth-child(even) {
+        background-color: #6eeccf;
+      }
+      tr:nth-child(odd) {
+        background-color: #2d7f88;
+      }
+
+table,th,td {
+        border: 3px solid black;
+      }
+
+Link{
+  float: right;
+}
+/* div.form{
+  padding: 10px;
+  display: flex;
+  align-content: flex-start;
+  float: left;
+  height: 250px;
+  width: 80%;
+  border: black solid 3px;
+}
+
+form{
+  display: flex;
+  justify-content: flex-start;
+}
+/* 
+div.form input{
+  width: 500px;
+}
+
+div.form p{
+  padding: 10px;
+}
+label{
+  padding: 50px;
+} */ 
+
+button{
+  background-color: red;
+}

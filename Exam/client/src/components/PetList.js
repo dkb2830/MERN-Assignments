@@ -1,15 +1,15 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from '@reach/router';
 const PetList = (props) => {
-    const { removeFromDom, pet } = props;
-    const deletePet = (petId) => {
-        axios.delete('http://localhost:8000/api/pet/' + petId)
-            .then(res => {
-                removeFromDom(petId)
-            })
-            .catch(err => console.log(err))
-    }
+    const { pet } = props;
+    // const deletePet = (petId) => {
+    //     axios.delete('http://localhost:8000/api/pet/' + petId)
+    //         .then(res => {
+    //             removeFromDom(petId)
+    //         })
+    //         .catch(err => console.log(err))
+    // }
     return (
         <div>
             {

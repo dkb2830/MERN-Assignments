@@ -10,17 +10,35 @@ const Detail = (props) => {
                 ...res.data
             }))
     }, [])// eslint-disable-line react-hooks/exhaustive-deps
+
+    const { removeFromDom } = props;
+    const deletePet = (petId) => {
+        axios.delete('http://localhost:8000/api/pet/' + petId)
+            .then(res => {
+                removeFromDom(petId)
+            })
+            .catch(err => console.log(err))
+    }
     return (
-        <div>
-            <Link to={"/"}>Back to Home</Link>
+        <><Link to={"/"}>Back to Home</Link><br/><br/>
+            <button onClick={(e) => { deletePet(pet._id); }}>Adopt Pet</button>
             <h1>Pet Shelter</h1>
-            <h2>Details About: {pet.name}</h2>
-            <p>Name: {pet.name}</p>
-            <p>Breed: {pet.breed}</p>
-            <p>Description: {pet.description}</p>
-            <p>Skills: {pet.skills}</p>
-        </div>
+            <h3>Details About: {pet.name}</h3>
+            <div className='detail'>
+                <div>
+                    <h6>Breed:</h6>
+                    <p>{pet.breed}</p>
+                </div>
+                <div>
+                    <h6>Description:</h6> <p>{pet.description}</p>
+                </div>
+                <div>
+                    <h6 className='list'>Skills:</h6>
+                        <p>{pet.skillOne}</p><br />
+                        <p>{pet.skillTwo}</p><br />
+                        <p>{pet.skillThree}</p><br />
+                </div>
+            </div></>
     )
 }
 export default Detail;
-

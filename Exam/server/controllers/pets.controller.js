@@ -5,12 +5,14 @@ module.exports.index = (request, response) => {
     });
 }
 module.exports.createPet = (request, response) => {
-    const { name, breed, description, skills } = request.body;
+    const { name, breed, description, skillOne, skillTwo, skillThree } = request.body;
     Pet.create({
         name,
         breed,
         description,
-        skills
+        skillOne,
+        skillTwo,
+        skillThree
     })
         .then(pet => response.json(pet))
         .catch(err => response.json(err));
