@@ -27,17 +27,6 @@ const PetList = (props) => {
                                     <td>{p.breed}</td>
                                     <td><Link to={"/pet/" + p._id}>Details</Link>|<Link to={"/pet/" + p._id + "/edit"}>Edit</Link></td>
                                 </tbody>
-                            {/* <Link to={"/pet/" + p._id}>
-                                {p.name}, {p.breed}, {p.description}, {p.skills}
-                            </Link>
-                            |
-                            <Link to={"/pet/" + p._id + "/edit"}>
-                                Edit
-                            </Link>
-                            |
-                            <button onClick={(e) => { deletePet(p._id) }}>
-                                Delete
-                            </button> */}
                             </table>
                         </div>
                     )

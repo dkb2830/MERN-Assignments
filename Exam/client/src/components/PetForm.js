@@ -24,8 +24,9 @@ const PetForm = () => {
             .catch(err => {
                 console.log(err)
                 console.log(err.response.data.errors)
-                if (err.response.data.errors)
+                if (err.response.data.errors){
                 setErrors(err.response.data.errors);
+            }
             })           
     }
     return (
@@ -38,9 +39,9 @@ const PetForm = () => {
                 <form onSubmit={onSubmitHandler}>
                     <div className='col-6'>
                         <p>
-                            <label htmlFor='name' className='form-label'>Name</label><br />
+                            <label htmlFor='name' className='form-label'>Name{errors.name.message}</label><br />
                             {errors.name ?
-                                <p>{errors.name.message}</p>
+                                <span>{errors.name.message}</span>
                                 : null
                             }
 
