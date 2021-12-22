@@ -19,3 +19,14 @@ class Ninja {
     }
 }
 
+class Sensei extends Ninja {
+    constructor(wisdom) {
+        super(200, 10, 10, wisdom);
+    }
+
+    speakWisdom() {
+        super.drinkSake();
+        console.log("What one programmer can do in a month, two programmers can do in two months");
+    }
+}
+
