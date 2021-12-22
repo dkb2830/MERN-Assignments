@@ -44,6 +44,20 @@ const Update = (props) => {
                         value={breed}
                         onChange={(e) => { setBreed(e.target.value) }} />
                 </p>
+                <p>
+                    <label>Description</label><br/>
+                    <input type="text"
+                    name="description"
+                    value="description"
+                    onChange={(e) => { setDescription(e.target.value)}}/>
+                </p>
+                <p>
+                    <label>Skills</label><br/>
+                    <input type="text"
+                    name="skills"
+                    value="skills"
+                    onChange={(e) => {setSkills(e.target.value)}}/>
+                </p>
                 <input type="submit" />
             </form>
         </div>

@@ -23,6 +23,13 @@ module.exports.updateAuthor = (request, response) => {
         .then(updatedAuthor => response.json(updatedAuthor))
         .catch(err => response.json(err))
 }
+module.exports.deleteAuthor = (request, response) => {
+    Author.deleteOne({ _id: request.params.id })
+        .then(deleteConfirmation => response.json(deleteConfirmation))
+        .catch(err => response.json(err))
+}
+
+
 
 
 

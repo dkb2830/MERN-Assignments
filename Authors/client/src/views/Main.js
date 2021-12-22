@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import AuthorForm from '../components/AuthorForm';
+import { Link } from '@reach/router';
 import AuthorList from '../components/AuthorList';
 const Main = () => {
     const [author, setAuthor] = useState([]);

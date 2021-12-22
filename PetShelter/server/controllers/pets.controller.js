@@ -5,7 +5,7 @@ module.exports.index = (request, response) => {
     });
 }
 module.exports.createPet = (request, response) => {
-    const { name, breed, age } = request.body;
+    const { name, breed, description, skills } = request.body;
     Pet.create({
         name,
         breed,
@@ -33,6 +33,14 @@ module.exports.updatePet = (request, response) => {
         .then(updatedPet => response.json(updatedPet))
         .catch(err => response.json(err))
 }
+
+module.exports.deletePet = (request, response) => {
+    Pet.deleteOne({ _id: request.params.id })
+        .then(deleteConfirmation => response.json(deleteConfirmation))
+        .catch(err => response.json(err))
+}
+
+
 
 
 
